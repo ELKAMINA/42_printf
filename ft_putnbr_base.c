@@ -6,15 +6,11 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:42:41 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/07/18 10:09:52 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/14 14:29:18 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<unistd.h>
-
-void	ft_putchar(char	c)
-{
-	write(1, &c, 1);
-}
+#include "libftprintf.h"
 
 int	ft_is_space(char	*str)
 {
@@ -69,25 +65,25 @@ int	verif_errors(char	*str)
 	return (1);
 }
 
-void	ft_putnbr_base(int	nbr, char	*base)
+int	ft_putnbr_base(int	nbr, char	*base)
 {
 	long int	intlong;
 	long int	length;
-	int			i;
+	int			counter;
 
-	i = 0;
+	counter = 0;
 	intlong = nbr;
 	length = ft_strlen(base);
 	if (verif_errors(base) == 1)
 	{
 		if (intlong < 0)
 		{
-			ft_putchar('-');
+			counter += ft_putchar_counting('-');
 			intlong *= -1;
 		}
 		if (intlong >= length)
 			ft_putnbr_base((intlong / length), base);
-		ft_putchar(base[intlong % length]);
+		counter += ft_putchar_counting(base[intlong % length]);
 	}
-	return ;
+	return (counter);
 }

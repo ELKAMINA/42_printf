@@ -1,30 +1,62 @@
+#include "libftprintf.h"
 
-int	display_count(char	c, va_list	list)
+
+static int	display_count(char	c, va_list	list)
 {
 	int	prct_counter;
 
 	prct_counter = 0;
 	if (c == 'c')
-		prct_counter = ft_putchar_counting(va_arg(list, int));
-	else if (c == 's')
-		prct_counter = ft_putstr_counting(va_arg(list, char	*));
-	else if (c == 'd' )
-		
+		prct_counter += ft_putchar_counting(va_arg(list, int));
+	if (c == 's')
+		prct_counter += ft_putstr_counting(va_arg(list, char	*));
+	if (c == 'd'|| c == 'i' )
+		prct_counter += ft_putnbr_counting(va_arg(list, int));
+	if (c == 'X')
+		prct_counter += ft_putnbr_base(va_arg(list, unsigned int), "0123456789ABCDEF");
+	if (c == 'x')
+		prct_counter += ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
+	if (c == '%')
+		prct_counter += ft_putchar_counting(va_arg(list, int));
+	//printf("prct_counter %d", prct_counter);
+	return (prct_counter);
+
+}
 
 int ft_printf(const char *fmt, ...)
 {
 	int		i;
-	va_list par;
 	int		counter;
-	int		j;
-	char	*s;
+	va_list	j;
 
 	i = 0;
-	va_start (par, fmt);
-	while (fmt && fmt[i])
+	counter = 0;
+	va_start(j, fmt);
+	while (fmt[i] != '\0')
 	{
-		if (fmt[i] == "%")
+		while (fmt[i] != '\0' && fmt[i] != '%')
 		{
+			ft_putchar_counting(fmt[i]);
 			i ++;
-			counter = display_count(fmt[i], par);
 		}
+		if (fmt[i] == '%')
+			counter = display_count(fmt[++i], j);
+		else
+			break ;
+		//printf("counter %d\n", counter);
+		i++;
+	}
+	//printf("counter + i %d\n", counter+i);
+	return (counter + i);
+}
+
+int	main()
+{
+	char	*str;
+	int	entier;
+
+	str = "HELLO";
+	entier = 454;
+	ft_printf("Hey%skdd %d", str, entier);
+}
+

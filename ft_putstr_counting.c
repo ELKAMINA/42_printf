@@ -6,19 +6,19 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:59:48 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/14 11:51:55 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/14 14:30:36 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-int	ft_putstr_fd(char *s)
+int	ft_putstr_counting(char *s)
 {
 	int	i;
 
 	i = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (s[i])
 	{
 		write(1, &s[i], 1);

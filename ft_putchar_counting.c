@@ -6,18 +6,17 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:54:10 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/14 11:52:07 by ael-khat         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:49:27 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-int	ft_putchar_fd(char c)
+int	ft_putchar_counting(char c)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	write (1, &c, 1);
-	i ++;
 	return (i);
 }
