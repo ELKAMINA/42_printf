@@ -27,9 +27,11 @@ int ft_printf(const char *fmt, ...)
 {
 	int		i;
 	int		counter;
+	int		k;
 	va_list	j;
 
 	i = 0;
+	k = 0;
 	counter = 0;
 	va_start(j, fmt);
 	while (fmt[i] != '\0')
@@ -38,25 +40,33 @@ int ft_printf(const char *fmt, ...)
 		{
 			ft_putchar_counting(fmt[i]);
 			i ++;
+			k ++;
 		}
+		//printf("----je suis le I apres boucle 1 --%d", i);
 		if (fmt[i] == '%')
+		{
+			
+			//printf("je suis le I avant%d", i);
 			counter = display_count(fmt[++i], j);
+			//printf("je suis le counter apres %d", counter);
+		}
 		else
 			break ;
-		//printf("counter %d\n", counter);
-		i++;
+		i ++;
+		//printf("---je suis le i fin de boucle--- %d", i);
 	}
-	//printf("counter + i %d\n", counter+i);
-	return (counter + i);
+//	printf("je suis le i %d\n", k);
+	return (counter + k);
 }
 
 int	main()
 {
 	char	*str;
-	int	entier;
+	//int	entier;
 
 	str = "HELLO";
-	entier = 454;
-	ft_printf("Hey%skdd %d", str, entier);
+	//entier = 454;
+	//printf("%d", ft_printf("Test%spoj", str));
+	//printf("%d", printf("Test%spoj", str));
 }
 
