@@ -42,20 +42,19 @@ static int	verif_errors(char	*str)
 	return (1);
 }
 
-int	ft_putnbr_base(unsigned int	nbr, char	*base)
+int	ft_putnbr_base(unsigned long long	nbr, char	*base)
 {
-	long unsigned int	intlong;
-	long unsigned int	length;
-	int			counter;
+	//unsigned long long	intlong;
+	unsigned long long	length;
+	int					counter;
 
 	counter = 0;
-	intlong = nbr;
 	length = ft_strlen(base);
 	if (verif_errors(base) == 1)
 	{
-		if (intlong >= length)
-			counter = ft_putnbr_base((intlong / length), base);
-		counter += ft_putchar_counting(base[intlong % length]);
+		if (nbr >= length)
+			counter = ft_putnbr_base((nbr / length), base);
+		counter += ft_putchar_counting(base[nbr % length]);
 	}
 	return (counter);
 }

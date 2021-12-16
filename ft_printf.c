@@ -20,9 +20,12 @@ static int	display_count(char	c, va_list	list)
 		prct_counter = ft_putchar_counting('%');
 	if (c == 'u')
 		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789");
-	//printf("prct_counter %d", prct_counter);
+	if (c == 'p')
+	{
+		prct_counter = ft_putstr_counting("0x");
+		prct_counter += ft_putnbr_base(va_arg(list, unsigned long long), "0123456789abcdef");
+	}
 	return (prct_counter);
-
 }
 
 int ft_printf(const char *fmt, ...)
@@ -44,36 +47,31 @@ int ft_printf(const char *fmt, ...)
 			i ++;
 			k ++;
 		}
-		//printf("----je suis le I apres boucle 1 --%d", i);
 		if (fmt[i] == '%')
 		{
 			i ++;
-			//printf("je suis le I avant%d", i);
 			counter += display_count(fmt[i], j);
-			//printf("je suis le counter apres %d", counter);
 		}
 		else
 			break ;
-		//printf("je suis counter%d", counter);
 		i ++;
-		//printf("---je suis le i fin de boucle--- %d", i);
 	}
-//	printf("je suis le i %d\n", k);
+	va_end(j);
 	return (counter + k);
 }
 
-
 /*int	main()
 {
-	char	*str;
-	//int	entier;
+	//char	*str = "3b";
+	//int min = 0;
+	//int max = 0;
+	//
 
-	str = NULL;
-	//entier = 454;
-	//printf("%d", ft_printf("Test%spoj", str));
+	//unsigned int	ptr = 5000000;
+	//str = "salut";
+	printf("\nnumero = %d\n",printf("%p %p", 0, 0));
 	//printf("%d", ft_printf("je %d", -1));
 	//printf("%d", ft_printf("%%"));
-	printf("%d", ft_printf("NULL %s NULL", str));
-	//printf("prct_counter %d", prct_counter);
+	//printf("%d", ft_printf("NULL %s NULL", str));
 }
 */
