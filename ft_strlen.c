@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_counting.c                               :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 16:59:48 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/14 14:30:36 by ael-khat         ###   ########.fr       */
+/*   Created: 2021/12/06 17:28:25 by ael-khat          #+#    #+#             */
+/*   Updated: 2021/12/06 17:29:50 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_counting(char *s)
+unsigned int ft_strlen(const char *str)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	if (!s)
-	{
-		i = ft_putstr_counting("(null)");
-	}
-	else
-	{
-		while (s[i])
-		{
-			write(1, &s[i], 1);
-			i ++;
-		}
-	}
+	while (str[i])
+		i++;
 	return (i);
 }

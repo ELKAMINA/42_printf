@@ -17,7 +17,9 @@ static int	display_count(char	c, va_list	list)
 	if (c == 'x')
 		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
 	if (c == '%')
-		prct_counter = ft_putchar_counting(va_arg(list, int));
+		prct_counter = ft_putchar_counting('%');
+	if (c == 'u')
+		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789");
 	//printf("prct_counter %d", prct_counter);
 	return (prct_counter);
 
@@ -60,15 +62,18 @@ int ft_printf(const char *fmt, ...)
 	return (counter + k);
 }
 
+
 /*int	main()
 {
-	//char	*str;
+	char	*str;
 	//int	entier;
 
-	//str = "HELLO";
+	str = NULL;
 	//entier = 454;
 	//printf("%d", ft_printf("Test%spoj", str));
-	printf("%d", ft_printf("je %d", -1));
-	//printf("%d", printf("je %d", 58));
+	//printf("%d", ft_printf("je %d", -1));
+	//printf("%d", ft_printf("%%"));
+	printf("%d", ft_printf("NULL %s NULL", str));
+	//printf("prct_counter %d", prct_counter);
 }
 */

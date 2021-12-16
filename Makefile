@@ -2,7 +2,7 @@ CC = gcc -Wall -Werror -Wextra
 
 NAME =  libftprintf.a
 
-SRC = ft_putchar_counting.c ft_putnbr_base.c ft_putnbr_counting.c\
+SRC = ft_putchar_counting.c ft_putnbr_base.c ft_putnbr_counting.c ft_strlen.c\
 		ft_putstr_counting.c ft_printf.c\
 
 OBJ = $(SRC:.c=.o)
