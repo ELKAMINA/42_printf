@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 
 static int	display_count(char	c, va_list	list)
@@ -7,17 +7,17 @@ static int	display_count(char	c, va_list	list)
 
 	prct_counter = 0;
 	if (c == 'c')
-		prct_counter += ft_putchar_counting(va_arg(list, int));
+		prct_counter = ft_putchar_counting(va_arg(list, int));
 	if (c == 's')
-		prct_counter += ft_putstr_counting(va_arg(list, char	*));
+		prct_counter = ft_putstr_counting(va_arg(list, char	*));
 	if (c == 'd'|| c == 'i' )
-		prct_counter += ft_putnbr_counting(va_arg(list, int));
+		prct_counter = ft_putnbr_counting(va_arg(list, int));
 	if (c == 'X')
-		prct_counter += ft_putnbr_base(va_arg(list, unsigned int), "0123456789ABCDEF");
+		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789ABCDEF");
 	if (c == 'x')
-		prct_counter += ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
+		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
 	if (c == '%')
-		prct_counter += ft_putchar_counting(va_arg(list, int));
+		prct_counter = ft_putchar_counting(va_arg(list, int));
 	//printf("prct_counter %d", prct_counter);
 	return (prct_counter);
 
@@ -45,13 +45,14 @@ int ft_printf(const char *fmt, ...)
 		//printf("----je suis le I apres boucle 1 --%d", i);
 		if (fmt[i] == '%')
 		{
-			
+			i ++;
 			//printf("je suis le I avant%d", i);
-			counter = display_count(fmt[++i], j);
+			counter += display_count(fmt[i], j);
 			//printf("je suis le counter apres %d", counter);
 		}
 		else
 			break ;
+		//printf("je suis counter%d", counter);
 		i ++;
 		//printf("---je suis le i fin de boucle--- %d", i);
 	}
@@ -59,14 +60,15 @@ int ft_printf(const char *fmt, ...)
 	return (counter + k);
 }
 
-int	main()
+/*int	main()
 {
-	char	*str;
+	//char	*str;
 	//int	entier;
 
-	str = "HELLO";
+	//str = "HELLO";
 	//entier = 454;
 	//printf("%d", ft_printf("Test%spoj", str));
-	//printf("%d", printf("Test%spoj", str));
+	printf("%d", ft_printf("je %d", -1));
+	//printf("%d", printf("je %d", 58));
 }
-
+*/
