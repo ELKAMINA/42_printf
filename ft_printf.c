@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 
-
 static int	display_count(char	c, va_list	list)
 {
 	int	prct_counter;
@@ -47,11 +46,8 @@ int ft_printf(const char *fmt, ...)
 			i ++;
 			k ++;
 		}
-		if (fmt[i] == '%')
-		{
-			i ++;
+		if (fmt[i++] == '%')
 			counter += display_count(fmt[i], j);
-		}
 		else
 			break ;
 		i ++;
@@ -59,19 +55,3 @@ int ft_printf(const char *fmt, ...)
 	va_end(j);
 	return (counter + k);
 }
-
-/*int	main()
-{
-	//char	*str = "3b";
-	//int min = 0;
-	//int max = 0;
-	//
-
-	//unsigned int	ptr = 5000000;
-	//str = "salut";
-	printf("\nnumero = %d\n",printf("%p %p", 0, 0));
-	//printf("%d", ft_printf("je %d", -1));
-	//printf("%d", ft_printf("%%"));
-	//printf("%d", ft_printf("NULL %s NULL", str));
-}
-*/
