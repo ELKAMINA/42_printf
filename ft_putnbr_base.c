@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/03 19:33:08 by ael-khat          #+#    #+#             */
+/*   Updated: 2022/01/03 19:34:34 by ael-khat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	ft_is_space(char	*str)
@@ -15,7 +27,6 @@ static int	ft_is_space(char	*str)
 	}
 	return (1);
 }
-
 
 static int	verif_errors(char	*str)
 {
@@ -42,9 +53,8 @@ static int	verif_errors(char	*str)
 	return (1);
 }
 
-int	ft_putnbr_base(unsigned long long	nbr, char	*base)
+int	ft_putnbr_base(unsigned long long nbr, char *base)
 {
-	//unsigned long long	intlong;
 	unsigned long long	length;
 	int					counter;
 

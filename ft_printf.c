@@ -1,33 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/03 19:22:06 by ael-khat          #+#    #+#             */
+/*   Updated: 2022/01/03 19:30:18 by ael-khat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static int	display_count(char	c, va_list	list)
+static int	display_count(char c, va_list list)
 {
-	int	prct_counter;
+	int	c;
 
-	prct_counter = 0;
+	c = 0;
 	if (c == 'c')
-		prct_counter = ft_putchar_counting(va_arg(list, int));
+		c = ft_putchar_counting(va_arg(list, int));
 	if (c == 's')
-		prct_counter = ft_putstr_counting(va_arg(list, char	*));
-	if (c == 'd'|| c == 'i' )
-		prct_counter = ft_putnbr_counting(va_arg(list, int));
+		c = ft_putstr_counting(va_arg(list, char *));
+	if (c == 'd' || c == 'i')
+		c = ft_putnbr_counting(va_arg(list, int));
 	if (c == 'X')
-		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789ABCDEF");
+		c = ft_putnbr_base(va_arg(list, unsigned int), "0123456789ABCDEF");
 	if (c == 'x')
-		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
+		c = ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
 	if (c == '%')
-		prct_counter = ft_putchar_counting('%');
+		c = ft_putchar_counting('%');
 	if (c == 'u')
-		prct_counter = ft_putnbr_base(va_arg(list, unsigned int), "0123456789");
+		c = ft_putnbr_base(va_arg(list, unsigned int), "0123456789");
 	if (c == 'p')
 	{
-		prct_counter = ft_putstr_counting("0x");
-		prct_counter += ft_putnbr_base(va_arg(list, unsigned long long), "0123456789abcdef");
+		c = ft_putstr_counting("0x");
+		c += ft_putnbr_base(va_arg(list, unsigned long long),
+				"0123456789abcdef");
 	}
-	return (prct_counter);
+	return (c);
 }
 
-int ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	int		i;
 	int		counter;

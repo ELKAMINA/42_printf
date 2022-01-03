@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 17:28:25 by ael-khat          #+#    #+#             */
-/*   Updated: 2021/12/06 17:29:50 by ael-khat         ###   ########.fr       */
+/*   Created: 2022/01/03 19:35:22 by ael-khat          #+#    #+#             */
+/*   Updated: 2022/01/03 19:35:36 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int ft_strlen(const char *str)
+unsigned int	ft_strlen(const char *str)
 {
 	unsigned int	i;
 
