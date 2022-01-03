@@ -6,32 +6,32 @@
 /*   By: ael-khat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 19:22:06 by ael-khat          #+#    #+#             */
-/*   Updated: 2022/01/03 19:30:18 by ael-khat         ###   ########.fr       */
+/*   Updated: 2022/01/03 19:40:15 by ael-khat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	display_count(char c, va_list list)
+static int	display_count(char a, va_list list)
 {
 	int	c;
 
 	c = 0;
-	if (c == 'c')
+	if (a == 'c')
 		c = ft_putchar_counting(va_arg(list, int));
-	if (c == 's')
+	if (a == 's')
 		c = ft_putstr_counting(va_arg(list, char *));
-	if (c == 'd' || c == 'i')
+	if (a == 'd' || a == 'i')
 		c = ft_putnbr_counting(va_arg(list, int));
-	if (c == 'X')
+	if (a == 'X')
 		c = ft_putnbr_base(va_arg(list, unsigned int), "0123456789ABCDEF");
-	if (c == 'x')
+	if (a == 'x')
 		c = ft_putnbr_base(va_arg(list, unsigned int), "0123456789abcdef");
-	if (c == '%')
+	if (a == '%')
 		c = ft_putchar_counting('%');
-	if (c == 'u')
+	if (a == 'u')
 		c = ft_putnbr_base(va_arg(list, unsigned int), "0123456789");
-	if (c == 'p')
+	if (a == 'p')
 	{
 		c = ft_putstr_counting("0x");
 		c += ft_putnbr_base(va_arg(list, unsigned long long),
